@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+    {% block content %}
+    <div align="center">
+        <h2 allign:center>Remove Judge Assignment</h2>
+    </div>
+
+
+
+                  <form action= "assigned_judge"  method="POST" autocomplete="off">
+                    <table style="width: 70%;" align='center'>
+                        {% csrf_token %}
+            <label for="assigned_judges">Assigned Judges:</label><br>
+            <input list="assigned_judges" id="judge" name="judge" maxlength="100" required>
+
+            <datalist id="assigned_judges">
+
+            {% if assigned_judges %}
+          {% for judge in assigned_judges %}
+                  <option value="{{ judge.judge_id }}">
+            {% endfor %}
+            {% else %}
+                <option value="No records" >
+                            {% endif %}
+
+            </datalist>
+              <button type="submit" formaction="/removeassignmentsjudges">Remove Judge Assignment</button>
+
+
+
+
+
+
+
+          </form>
+
+      {% endblock content %}

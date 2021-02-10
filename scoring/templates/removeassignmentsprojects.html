@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+    {% block content %}
+    <div align="center">
+        <h2 allign:center>Remove Project Assignment</h2>
+    </div>
+    <form action= "assigned_projects"  method="POST" autocomplete="off">
+      <table style="width: 70%;" align='center'>
+                        {% csrf_token %}
+            <label for="assigned_projects">Assigned Projects:</label><br>
+            <input list="assigned_projects" id="project" name="project" maxlength="100" required>
+
+            <datalist id="assigned_projects">
+
+            {% if assigned_projects %}
+          {% for project in assigned_projects %}
+
+
+                  <option value="{{ project.project_id }}">
+
+                    {% endfor %}
+                    {% else %}
+                        <option value="No records" >
+                            {% endif %}
+
+            </datalist>
+              <button type="submit" formaction="/removeassignmentsprojects">Remove Project Assignment</button>
+
+
+
+
+
+
+
+          </form>
+
+      {% endblock content %}
